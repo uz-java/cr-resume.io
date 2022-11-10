@@ -1,6 +1,7 @@
 package com.example.resumecreate.service.file;
 
 import com.example.resumecreate.domains.Picture;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,6 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
  * ResumeCreate/IntelliJ IDEA
  */
 @Service
-public interface FileService {
-    Picture uploadPicture(MultipartFile picture);
+@RequiredArgsConstructor
+public class FileServiceImpl implements FileService{
+    @Override
+    public Picture uploadPicture(MultipartFile picture) {
+        return null;
+    }
 }

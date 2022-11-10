@@ -5,11 +5,14 @@ import com.example.resumecreate.dtos.resume.ResumeCreateDTO;
 import com.example.resumecreate.dtos.resume.ResumeDTO;
 import com.example.resumecreate.service.resume.ResumeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -33,5 +36,17 @@ public class ResumeController {
     public ResponseEntity<Picture> uploadPicture(@RequestParam("file")MultipartFile file,@RequestParam Long resumeId){
         Picture picture=service.attachPicture(file,resumeId);
         return new ResponseEntity<>(picture,HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/generateAsPDF")
+    public ResponseEntity<byte[]> generateAsPDF(@RequestParam Long resumeId) throws IOException{
+        byte[] bytes=service.generateAsPDF(resumeId);
+        String fileName="Response.pdf";
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .contentLength(bytes.length)
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\"" + fileName+"\"")
+                .body(bytes);
     }
 }

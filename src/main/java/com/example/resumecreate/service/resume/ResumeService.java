@@ -16,4 +16,6 @@ public interface ResumeService {
     ResumeDTO create(ResumeCreateDTO dto);
 
     Picture attachPicture(MultipartFile file, Long resumeId);
+
+    byte[] generateAsPDF(Long resumeId);
 }
