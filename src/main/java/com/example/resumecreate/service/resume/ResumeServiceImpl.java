@@ -22,7 +22,6 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,10 +35,11 @@ import java.util.Map;
  */
 @Service
 @RequiredArgsConstructor
-public class ResumeServiceImpl implements ResumeService{
+public class ResumeServiceImpl implements ResumeService {
     private final ResumeMapper resumeMapper;
     private final ResumeRepository repository;
     private final FileService fileService;
+
     @Override
     public ResumeDTO create(ResumeCreateDTO dto) {
         Resume resume = resumeMapper.fromCreateDTO(dto);
@@ -61,16 +61,16 @@ public class ResumeServiceImpl implements ResumeService{
     public byte[] generateAsPDF(Long resumeId) {
         Resume resume = repository.getReferenceById(resumeId);
         Template template = TemplateUtils.getTemplate(resume.getTemplateName());
-        try(FileOutputStream pdfStream=new FileOutputStream("resume.pdf")) {
+        try (FileOutputStream pdfStream = new FileOutputStream("resume.pdf")) {
             String responsePage = FreeMarkerTemplateUtils.processTemplateIntoString(template, Map.of("resume", resume));
             System.out.println(responsePage);
-            PdfWriter pdfWriter=new PdfWriter(pdfStream);
-            PdfDocument document=new PdfDocument(pdfWriter);
-            document.setDefaultPageSize(new PageSize(850f,1200f));
-            ConverterProperties converterProperties=new ConverterProperties();
-            converterProperties.setFontProvider(new DefaultFontProvider(true,true,true));
-            HtmlConverter.convertToPdf(responsePage,document,converterProperties);
-            FileInputStream fileInputStream=new FileInputStream("resume.pdf");
+            PdfWriter pdfWriter = new PdfWriter(pdfStream);
+            PdfDocument document = new PdfDocument(pdfWriter);
+            document.setDefaultPageSize(new PageSize(850f, 1200f));
+            ConverterProperties converterProperties = new ConverterProperties();
+            converterProperties.setFontProvider(new DefaultFontProvider(true, true, true));
+            HtmlConverter.convertToPdf(responsePage, document, converterProperties);
+            FileInputStream fileInputStream = new FileInputStream("resume.pdf");
             byte[] response = fileInputStream.readAllBytes();
             fileInputStream.close();
             return response;
