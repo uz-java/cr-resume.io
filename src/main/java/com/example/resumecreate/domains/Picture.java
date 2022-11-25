@@ -19,6 +19,7 @@ import javax.persistence.Id;
 @Builder
 @Entity
 public class Picture {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

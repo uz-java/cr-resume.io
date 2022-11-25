@@ -17,6 +17,7 @@ import java.util.List;
 @Builder
 @Entity
 public class Resume {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

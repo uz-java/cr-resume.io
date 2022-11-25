@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class ResumeCreateDTO {
+
     private HeaderCreateDTO header;
     private String templateName;
     private String about;
