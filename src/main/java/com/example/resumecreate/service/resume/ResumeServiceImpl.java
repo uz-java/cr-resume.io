@@ -59,7 +59,7 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public byte[] generateAsPDF(Long resumeId) {
+    public byte[] generateAsPDF(Long resumeId) throws IOException{
         Resume resume = repository.getReferenceById(resumeId);
         Template template = TemplateUtils.getTemplate(resume.getTemplateName());
         try (FileOutputStream pdfStream = new FileOutputStream("resume.pdf")) {

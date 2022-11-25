@@ -12,7 +12,6 @@ import org.mapstruct.Mapper;
  */
 @Mapper(componentModel = "spring")
 public interface ResumeMapper {
-
     Resume fromCreateDTO(ResumeCreateDTO dto);
     ResumeDTO fromResume(Resume resume);
 }

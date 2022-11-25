@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
  * @since 11/11/22 00:52 (Friday)
  * ResumeCreate/IntelliJ IDEA
  */
-@Repository
 public interface ResumeRepository extends JpaRepository<Resume,Long> {
 
 }

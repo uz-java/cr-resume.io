@@ -6,6 +6,8 @@ import com.example.resumecreate.dtos.resume.ResumeDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 /**
  * @author "Tojaliyev Asliddin"
  * @since 11/11/22 00:55 (Friday)
@@ -17,5 +19,5 @@ public interface ResumeService {
 
     Picture attachPicture(MultipartFile file, Long resumeId);
 
-    byte[] generateAsPDF(Long resumeId);
+    byte[] generateAsPDF(Long resumeId) throws IOException;
 }
