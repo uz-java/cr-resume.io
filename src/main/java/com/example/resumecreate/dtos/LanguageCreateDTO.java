@@ -14,6 +14,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class LanguageCreateDTO {
+
     private String name;
     private Proficiency proficiency;
 }

@@ -13,6 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class EducationCreateDTO {
+
     private String date;
     private String name;
     private String description;

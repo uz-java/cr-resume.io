@@ -13,6 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class SkillCreateDTO {
+
     private String name;
     private byte progress;
 }

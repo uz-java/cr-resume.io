@@ -13,6 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class SocialMediaAccountCreateDTO {
+
     private String name;
     private String url;
 }
