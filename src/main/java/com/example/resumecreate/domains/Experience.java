@@ -16,7 +16,6 @@ import javax.persistence.*;
 @Builder
 @Entity
 public class Experience {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

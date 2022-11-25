@@ -20,6 +20,7 @@ import javax.persistence.Id;
 @Builder
 @Entity
 public class Language {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

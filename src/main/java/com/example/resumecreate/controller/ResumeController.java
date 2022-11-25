@@ -25,7 +25,7 @@ import java.io.IOException;
 public class ResumeController {
     private final ResumeService service;
 
-    @PostMapping(value = "/create", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(value = "/create")
     public ResponseEntity<ResumeDTO> generateResume(@RequestBody ResumeCreateDTO dto) {
         ResumeDTO response = service.create(dto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -33,7 +33,7 @@ public class ResumeController {
 
     @PostMapping(value = "/uploadPicture",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Picture> uploadPicture(@RequestParam("file")MultipartFile file,@RequestParam Long resumeId){
+    public ResponseEntity<Picture> uploadPicture(@RequestParam("file") MultipartFile file,@RequestParam Long resumeId){
         Picture picture=service.attachPicture(file,resumeId);
         return new ResponseEntity<>(picture,HttpStatus.CREATED);
     }
