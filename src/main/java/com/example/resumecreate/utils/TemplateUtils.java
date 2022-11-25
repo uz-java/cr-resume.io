@@ -12,7 +12,6 @@ import java.io.IOException;
  */
 public class TemplateUtils {
     private static Configuration configuration;
-
     public TemplateUtils() {
     }
 

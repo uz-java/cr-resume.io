@@ -11,6 +11,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Proficiency {
+
     ELEMENTARY("Elementary proficiency"),
     LIMITED("Limited working proficiency"),
     PROFESSIONAL("Professional working proficiency"),

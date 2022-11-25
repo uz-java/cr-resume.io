@@ -19,7 +19,7 @@ import java.nio.file.StandardCopyOption;
 @Service
 @RequiredArgsConstructor
 public class FileServiceImpl implements FileService{
-    private static Path rootPath=Path.of("/home/asliddin/IdeaProjects/uploads");
+    private static Path rootPath=Path.of("/home/asliddin/uploads");
     @Override
     public Picture uploadPicture(MultipartFile picture) {
         try {
